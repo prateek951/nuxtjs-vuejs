@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Single Joke {{joke.id}}</h1>
+    <nuxt-link to="/jokes">Back to Jokes</nuxt-link>
+    <h1>Joke #{{joke.id}}</h1>
     <p>{{joke.joke}}</p>
   </div>
 </template>
@@ -28,7 +29,22 @@ export default {
       const { data: joke } = response;
       console.log(joke);
       this.joke = joke;
-    } catch (ex) {}
+    } catch (ex) {
+      console.log(ex);
+    }
+  },
+  head() {
+    return {
+      // For SEO (this is because of the vue-meta package)
+      title: `Joke #${this.$route.params.id}`,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "Best place for jokes app"
+        }
+      ]
+    };
   }
 };
 </script>

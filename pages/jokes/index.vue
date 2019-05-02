@@ -1,5 +1,6 @@
 <template>
   <div>
+    <SearchJokes @takeSearchTerm="onFilterJokes"/>
     <Joke v-for="joke in jokes" :key="joke.id" 
     :joke="joke.joke" :id="joke.id"/>
   </div>
@@ -8,6 +9,7 @@
 <script>
 import axios from "axios";
 import Joke from "@/components/Joke";
+import SearchJokes from "@/components/SearchJokes";
 export default {
   data() {
     return {
@@ -15,7 +17,8 @@ export default {
     };
   },
   components: {
-    Joke
+    Joke,
+    SearchJokes
   },
   async created() {
     const config = {
@@ -34,6 +37,16 @@ export default {
       this.jokes = jokes;
     } catch (ex) {
       console.log(ex);
+    }
+  },
+  methods: {
+    // Filter the jokes on the clientside
+    onFilterJokes(data) {
+      this.jokes = this.jokes.filter(joke => {
+        if (joke.joke.includes(data)) {
+          return joke;
+        }
+      });
     }
   },
   head() {
