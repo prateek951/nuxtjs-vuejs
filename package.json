@@ -1,0 +1,21 @@
+{
+  "name": "dadjokes",
+  "version": "1.0.0",
+  "description": "My riveting Nuxt.js project",
+  "author": "prateek951",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.4.0",
+    "tachyons": "^4.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
